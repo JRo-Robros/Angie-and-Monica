@@ -1,0 +1,74 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Character",
+"class": "Angel",
+"language": "GDScript",
+"path": "res://Scripts/Angel.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Block",
+"language": "GDScript",
+"path": "res://Scripts/Block.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Scripts/Character.gd"
+}, {
+"base": "Character",
+"class": "Devil",
+"language": "GDScript",
+"path": "res://Scripts/Devil.gd"
+}, {
+"base": "Node2D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://Scripts/Tile.gd"
+} ]
+_global_script_class_icons={
+"Angel": "",
+"Block": "",
+"Character": "",
+"Devil": "",
+"Tile": ""
+}
+
+[application]
+
+config/name="Duality"
+run/main_scene="res://Title.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+LevelsData="*res://Scripts/LevelsData.gd"
+
+[display]
+
+window/size/width=575
+window/size/height=350
+window/size/test_width=1150
+window/size/test_height=700
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.168627, 0.152941, 0.2, 1 )
+environment/default_environment="res://default_env.tres"

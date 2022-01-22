@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Editor.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Terrain.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Angel.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Devil.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Blocks.png" type="Texture" id=5]
+
+[node name="Editor" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Angel" type="Sprite" parent="."]
+position = Vector2( -49, 10 )
+z_index = 2
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 34, 34 )
+
+[node name="Devil" type="Sprite" parent="."]
+position = Vector2( -47, -13 )
+z_index = 2
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 34, 34 )
+
+[node name="Blocks" type="Sprite" parent="."]
+position = Vector2( 78, 147 )
+texture = ExtResource( 5 )
+
+[node name="Terrain" type="Sprite" parent="."]
+position = Vector2( 110, 22 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 22.0
+margin_top = 43.0
+margin_right = 198.0
+margin_bottom = 91.0
+rect_pivot_offset = Vector2( 8, -17 )
+text = "1      2      3       4       5      6
+
+0 - clear tile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 22.0
+margin_top = 164.0
+margin_right = 198.0
+margin_bottom = 263.0
+rect_pivot_offset = Vector2( 8, -17 )
+text = "q      w       e       r
+
+9 - clear block
+
+a - set angel start point
+d - set devil start point"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="TextEdit" parent="."]
+margin_left = 11.0
+margin_top = 280.0
+margin_right = 192.0
+margin_bottom = 337.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 196.0
+margin_top = 327.0
+margin_right = 226.0
+margin_bottom = 347.0
+text = "Go"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="make_level"]
