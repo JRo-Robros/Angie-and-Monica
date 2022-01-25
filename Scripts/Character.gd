@@ -119,7 +119,7 @@ func _input_received(dir):
 			"global_position",
 			global_position,
 			target_pos,
-			0.4,
+			0.25,
 			Tween.TRANS_CUBIC,
 			Tween.EASE_OUT
 		)
