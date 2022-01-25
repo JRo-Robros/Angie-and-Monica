@@ -5,6 +5,11 @@ var tiles = []
 var blocks = {}
 var angel_origin:=Vector2.ZERO
 var devil_origin:=Vector2.ZERO
+var levelName := "Title Here"
+var levelDesc := "Description"
+var parMoves := 15
+var parTime := 300
+
 
 var tile := preload('res://EditTile.tscn')
 
@@ -50,4 +55,9 @@ func make_level():
 	output.push_back(devil_origin.x)
 	output.push_back(angel_origin.y)
 	output.push_back(angel_origin.x)
+	output.push_back(parTime)
+	output.push_back(parMoves)
+	output.push_back(levelDesc)
+	output.push_back(levelName)
+	
 	$Output.text = JSON.print(output)

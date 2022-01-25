@@ -63,8 +63,6 @@ func _unhandled_key_input(event):
 				get_parent().set_angel_origin(grid_coord)
 			68:
 				get_parent().set_devil_origin(grid_coord)
-			78:
-				print(grid_coord)
 
 
 func _on_EditTile_mouse_entered():

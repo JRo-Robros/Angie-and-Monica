@@ -19,14 +19,8 @@ func reset():
 	initialize_level(level_data)
 
 func initialize_level(_levelData:Array) -> void:
-	angel.animation_player.play('Fly')
-	devil.animation_player.play('Fly')
-	angel.dead = false
-	devil.dead = false
-	angel.is_reversed = false
-	devil.is_reversed = false
-	angel.indicator.visible = false
-	devil.indicator.visible = false
+	angel.reset()
+	devil.reset()
 	for i in get_children():
 		i.queue_free()
 	level_data = _levelData.duplicate(true)

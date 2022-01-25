@@ -2,7 +2,8 @@ extends KinematicBody2D
 class_name Character
 
 onready var sprite:Sprite = $Sprite
-onready var indicator:Sprite = $Indicator
+onready var dizzyIndicator := $DizzyIndicator
+onready var stuckIndicator := $StuckIndicator
 onready var timer:Timer = $Timer
 onready var checker:= $Checker
 onready var tween := $Tween
@@ -13,7 +14,7 @@ export var move_distance := 33
 export var is_reversed := false
 var stuck := false
 var is_moving := false
-var dead = false
+var dead := false
 var can_move := true
 var motion := Vector2.ZERO
 var last_pos := Vector2()
@@ -29,7 +30,17 @@ func _ready():
 	
 func _physics_process(delta):
 	pass
-	
+
+func reset():
+	stuck = false
+	stuckIndicator.visible = false
+	is_reversed = false
+	dizzyIndicator.visible = false
+	is_moving = false
+	dead = false
+	can_move = true
+	is_active = false
+	animation_player.play("Fly")
 		
 func on_tile(type):
 	if !is_active:
@@ -47,9 +58,10 @@ func on_tile(type):
 			character_dies()
 		3:
 			stuck = true
+			stuckIndicator.visible = true
 		4:
 			is_reversed = !is_reversed
-			indicator.visible = !indicator.visible
+			dizzyIndicator.visible = !dizzyIndicator.visible
 		5:
 			if self.name == 'Angel': on_goal = true
 		6:
@@ -66,8 +78,8 @@ func check_move(dir:Vector2, prevent_infinite = false) -> bool:
 	if dead:
 		return false
 	if stuck:
-		print('stuck')
 		motion = Vector2.ZERO
+		stuckIndicator.visible = false
 		stuck = false
 		return false
 	checker.cast_to = dir.normalized()*20
@@ -94,6 +106,7 @@ func character_dies():
 	
 func _input_received(dir):
 	if is_moving:
+		get_parent().receive_input += 1
 		return
 	if is_reversed:
 		dir *= -1
@@ -114,6 +127,7 @@ func _input_received(dir):
 		is_moving = true
 		yield(tween, 'tween_completed')
 		is_moving = false
+	get_parent().receive_input += 1
 
 func _stop_input():
 	emit_signal('stop_input')
