@@ -83,6 +83,7 @@ func _on_level_cleared():
 	devil.is_active = false
 	level += 1
 	receive_input = 0
+	$Good.play()
 	yield(get_tree().create_timer(0.5), "timeout")
 #	show_level_summary()
 	if LevelsData.level_exists(level):
