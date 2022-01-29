@@ -26,6 +26,8 @@ const LEVELS:Array = [
 	[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,1,1,3,0,0,0,0,1,3,3,3,3,1,0,0,0,0,1,3,6,5,3,1,0,0,0,0,1,3,4,4,3,1,0,0,0,0,1,3,3,3,3,1,0,0,0,0,3,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,8,2,1,7,300,23,"","Sticky Situation"]
 ]
 
+var custom_level:Array = []
+
 func _ready():
 	pass # Replace with function body.
 
@@ -38,3 +40,31 @@ func level_exists(level) -> bool:
 	if level > LEVELS.size():
 		return false
 	return true
+
+func set_custom_level(_inputString:String) -> void:
+	if _inputString == "":
+		return	
+		
+	var data = JSON.parse(_inputString)
+	
+	if typeof(data.result) == TYPE_ARRAY:
+		if data.result.size() < 1: 
+			push_error("Data Format Error: 1")
+			return
+		if not (data.result[0] is Array):
+			if data.result.size() < 100:
+				push_error("Data Format Error: 2")
+				return
+			print("One Custom Level")
+			custom_level.push_back(data.result)
+			return 
+		if data.result[0].size() < 100:
+			push_error("Data Format Error: 3")
+			return
+	else:
+		push_error("Data Format Error: 0")
+		return
+		
+	print("Multiple Custom Levels")
+	custom_level = data.result
+	return

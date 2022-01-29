@@ -15,7 +15,11 @@ func _ready():
 	level = 1
 	connect('input_received', angel, '_input_received')
 	connect('input_received', devil, '_input_received')
-	levelController.initialize_level( LevelsData.get_level_data(level) )
+	
+	if LevelsData.custom_level.size() > 0:
+		levelController.initialize_level(LevelsData.custom_level[level-1])
+	else:
+		levelController.initialize_level( LevelsData.get_level_data(level) )
 
 func _process(delta):
 	if receive_input >= 2:
