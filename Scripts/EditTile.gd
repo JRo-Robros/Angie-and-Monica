@@ -1,30 +1,27 @@
 extends Area2D
 
 var grid_coord =  Vector2(0,0)
-var index = 0
-var tile_type = 0
-var block_type = 0
+var index:int = 0
+var tile_type:int = 0
+var block_type:int = 0
 var active = false
 
 onready var tile_sprite = $TileSprite
 onready var block_sprite = $BlockSprite
+onready var editor = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_tile_type(tile_type)
 
-func set_tile_type(type):
+func set_tile_type(type:int):
 	tile_type = type
-	get_parent().set_tile_type(index, type)
-	if type != 0:
-		tile_sprite.visible = true
-		tile_sprite.region_rect = Rect2(type * 34 - 34, 0, 34, 34)
-	else:
-		tile_sprite.visible = false
+	editor.set_tile_type(index, type)
+	_set_tile_type(type)
 
 func set_block_type(type):
 	block_type = type
-	get_parent().add_rem_block(grid_coord, type)
+	editor.add_rem_block(grid_coord, type)
 	_set_block_type(type)
 
 func _unhandled_key_input(event):
@@ -56,9 +53,9 @@ func _unhandled_key_input(event):
 			82:
 				set_block_type(4)
 			65:
-				get_parent().set_angel_origin(grid_coord)
+				editor.set_angel_origin(grid_coord)
 			68:
-				get_parent().set_devil_origin(grid_coord)
+				editor.set_devil_origin(grid_coord)
 
 
 func _on_EditTile_mouse_entered():
@@ -76,3 +73,10 @@ func _set_block_type(type:int):
 		block_sprite.region_rect = Rect2(type * 34 - 34, 0, 34, 34)
 	else:
 		block_sprite.visible = false
+		
+func _set_tile_type(type:int):
+	if type != 0:
+		tile_sprite.visible = true
+		tile_sprite.region_rect = Rect2(type * 34 - 34, 0, 34, 34)
+	else:
+		tile_sprite.visible = false
