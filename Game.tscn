@@ -159,13 +159,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FallSplat" type="AudioStreamPlayer" parent="LevelSummary/VBoxContainer"]
-stream = ExtResource( 6 )
-volume_db = 6.0
-
 [node name="NopeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -6.0
+
+[node name="FallSplat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 6.0
 
 [node name="Good" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
