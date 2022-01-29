@@ -15,6 +15,7 @@ var parTime := 300
 
 var tile := preload('res://EditTile.tscn')
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in 100:
@@ -43,7 +44,7 @@ func add_rem_block(coord, type):
 	else:
 		blocks[key] = [type-1, coord.x, coord.y]
 
-func set_tile_type(index, type):
+func set_tile_type(index:int, type:int):
 	tiles[index] = type
 	
 func make_level():
@@ -66,36 +67,44 @@ func make_level():
 	$Output.text = JSON.print(output)
 
 func initialize_level(_levelData:Array) -> void:
-	angel.reset()
-	devil.reset()
-	for i in get_children():
-		i.queue_free()
-	_levelData.pop_back()
-	_levelData.pop_back()
+	angel.position = Vector2.ZERO
+	devil.position = Vector2.ZERO
+	print(_levelData.pop_back())
+	print(_levelData.pop_back())
 	var moves = _levelData.pop_back()
 	var time = _levelData.pop_back()
 	var angelOrigin = Vector2(_levelData.pop_back(),_levelData.pop_back())
 	var devilOrigin = Vector2(_levelData.pop_back(),_levelData.pop_back())
-	for i in 100:
-		var a = tile.instance()
-		a.position.x = (i % 10) * 33
-		a.position.y = (i / 10) * 33 + 33
-		a.type = _levelData.pop_back()
-		add_child(a)
+	for i in editTiles:
+		i.set_tile_type(_levelData.pop_back())
 		
+	print(_levelData.size())
 	while _levelData.size() > 0:
 		var bType = _levelData.pop_back()
 		# ind = x + (y*10)
 		var etInd = _levelData.pop_back() + (_levelData.pop_back() * 10)
-		editTiles[etInd]._set_block_type(bType+1)
+		editTiles[etInd].set_block_type(bType+1)
 		
 		#var b = block.instance()
 		#b.blockType = _levelData.pop_back()
 		#b.position = Vector2((33 * _levelData.pop_back()), (33 * _levelData.pop_back()) + 33)
 		#add_child(b)
 		
-	angel.position = Vector2(position.x + (33 * angelOrigin.x), position.y + 33 + (33 * angelOrigin.y))
-	devil.position = Vector2(position.x + (33 * devilOrigin.x), position.y + 33 + (33 * devilOrigin.y))
+	set_angel_origin(angelOrigin)
+	set_devil_origin(devilOrigin)
 		
-	emit_signal("level_initialized")
+#	emit_signal("level_initialized")
+	return
+
+func load_from_input() -> void:
+	load_from_string(get_node("Output").text)
+	return
+	
+func load_from_string(_inputString:String) -> void:
+	var data = JSON.parse(_inputString)
+	if typeof(data.result) == TYPE_ARRAY:
+		initialize_level(data.result)
+	else:
+		push_error("Unexpected results.")
+
 	return
