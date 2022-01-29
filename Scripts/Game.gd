@@ -101,7 +101,9 @@ func show_level_summary():
 	$LevelSummary.visible = true
 	var bd = "[center]Well Done!\n\n"
 	bd += "Moves: " + str(moves) + "\n\n"
-	if moves-levelMoves == 0:
+	if moves-levelMoves < 0:
+		bd += "New Record!!"
+	elif moves-levelMoves == 0:
 		bd += "3 Stars"
 	elif moves-levelMoves < 3:
 		bd += "2 Stars"
@@ -111,6 +113,8 @@ func show_level_summary():
 		
 	$LevelSummary/VBoxContainer/Breakdown.bbcode_text = bd
 	$LevelSummary/VBoxContainer/Advance.grab_focus()
+	
+	$LevelSummary/VBoxContainer/DialogueBox.percent_visible = 1
 	
 func advance():
 	$LevelSummary.visible = false
