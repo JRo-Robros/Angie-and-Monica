@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FallSplat.mp3-6a4738f5e3a7059ecc704c2ac6295704.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/FallSplat.mp3"
+dest_files=[ "res://.import/FallSplat.mp3-6a4738f5e3a7059ecc704c2ac6295704.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -102,6 +102,8 @@ func check_move(dir:Vector2, prevent_infinite = false) -> bool:
 func character_dies():
 	dead = true
 	motion = Vector2.ZERO
+	var fallsplatsound = get_parent().get_node('FallSplat')
+	if !fallsplatsound.is_playing(): fallsplatsound.play()
 	animation_player.play("Die")
 	
 func _input_received(dir):
