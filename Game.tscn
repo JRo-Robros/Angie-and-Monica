@@ -1,19 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Angel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Devil.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
-[ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=5]
 [ext_resource path="res://Assets/SFX/FallSplat.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/SFX/SoftNope.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/SFX/Good.wav" type="AudioStream" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
+[ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 9 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -35,8 +37,10 @@ margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/default_color = Color( 0.188235, 0.882353, 0.72549, 1 )
-custom_fonts/normal_font = SubResource( 1 )
-text = "Level "
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "Level"
+text = "Level"
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,31 +98,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="LevelSummary" type="Panel" parent="."]
 visible = false
 margin_left = 111.0
 margin_top = 1.0
 margin_right = 508.0
 margin_bottom = 346.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSummary"]
+margin_right = 397.0
+margin_bottom = 345.0
 rect_pivot_offset = Vector2( -374, 182 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
+[node name="Breakdown" type="RichTextLabel" parent="LevelSummary/VBoxContainer"]
+margin_top = 154.0
 margin_right = 397.0
-margin_bottom = 345.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="LevelName" type="RichTextLabel" parent="VBoxContainer/Panel"]
-margin_right = 397.0
-margin_bottom = 15.0
+margin_bottom = 166.0
 custom_colors/default_color = Color( 0.188235, 0.882353, 0.72549, 1 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Level Summary[/center]"
 text = "Level Summary"
@@ -127,7 +132,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FallSplat" type="AudioStreamPlayer" parent="."]
+[node name="Advance" type="Button" parent="LevelSummary/VBoxContainer"]
+margin_left = 158.0
+margin_top = 170.0
+margin_right = 238.0
+margin_bottom = 190.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Next Level"
+
+[node name="Spacer" type="Control" parent="LevelSummary/VBoxContainer"]
+margin_right = 3.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 3, 3 )
+
+[node name="Retry" type="Button" parent="LevelSummary/VBoxContainer"]
+self_modulate = Color( 0.909804, 0.231373, 0.231373, 1 )
+margin_left = -99.0
+margin_top = 294.0
+margin_right = 43.0
+margin_bottom = 314.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Retry Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FallSplat" type="AudioStreamPlayer" parent="LevelSummary/VBoxContainer"]
 stream = ExtResource( 6 )
 volume_db = 6.0
 
@@ -147,3 +179,5 @@ volume_db = -6.0
 [connection signal="body_entered" from="Bounds" to="." method="_on_Bounds_body_entered"]
 [connection signal="pressed" from="Button" to="." method="_reset_level"]
 [connection signal="pressed" from="Button2" to="." method="_on_exittomenu_pressed"]
+[connection signal="pressed" from="LevelSummary/VBoxContainer/Advance" to="." method="advance"]
+[connection signal="pressed" from="LevelSummary/VBoxContainer/Retry" to="." method="_reset_level"]

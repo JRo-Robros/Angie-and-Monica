@@ -6,7 +6,12 @@ onready var devil := $Devil
 
 var receive_input := 0
 var level := 1
+var levelName := ""
+var levelDesc := ""
+var levelMoves := 15
+var levelTime := 300
 var moves := 0
+var time := 0
 var game_is_over := false
 
 signal input_received
@@ -65,6 +70,9 @@ func _on_Bounds_body_entered(body):
 		body.on_tile(0)
 
 func _on_Level_level_initialized():
+	$hud_level.bbcode_text = "[color=#e9e9e9]"+levelName+"[/color]"
+	$hud_level.append_bbcode("\n")
+	$hud_level.append_bbcode(levelDesc)
 	moves = -1
 	increment_moves()
 	game_is_over = false
@@ -74,6 +82,7 @@ func _on_Level_level_initialized():
 	devil.is_active = true
 
 func _reset_level():
+	$LevelSummary.visible = false
 	receive_input = 0
 	yield(get_tree().create_timer(0.5), "timeout")
 	levelController.reset()
@@ -85,16 +94,30 @@ func _on_level_cleared():
 	receive_input = 0
 	$Good.play()
 	yield(get_tree().create_timer(0.5), "timeout")
-#	show_level_summary()
-	if LevelsData.level_exists(level):
-		levelController.initialize_level(LevelsData.get_level_data(level))
-	else:
-		print('You win!!')
+	show_level_summary()
 		
 func _on_exittomenu_pressed():
 	return	
 
-#func show_level_summary():
-#	$VBoxContainer.visible = true
-#	$VBoxContainer/ColorRect/LevelName.append_bbcode("/n/nGreat Job!")
+func show_level_summary():
+	$LevelSummary.visible = true
+	var bd = "[center]Well Done!\n\n"
+	bd += "Moves: " + str(moves) + "\n\n"
+	if moves-levelMoves == 0:
+		bd += "3 Stars"
+	elif moves-levelMoves < 3:
+		bd += "2 Stars"
+	else:
+		bd += "1 Star"
+	bd += "\n\n[/center]"
+		
+	$LevelSummary/VBoxContainer/Breakdown.bbcode_text = bd
+	$LevelSummary/VBoxContainer/Advance.grab_focus()
+	
+func advance():
+	$LevelSummary.visible = false
+	if LevelsData.level_exists(level):
+		levelController.initialize_level(LevelsData.get_level_data(level))
+	else:
+		print('You win!!')
 	

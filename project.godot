@@ -65,6 +65,10 @@ window/stretch/aspect="keep"
 
 "main scene"=false
 
+[gui]
+
+theme/custom_font="res://Font.tres"
+
 [physics]
 
 common/enable_pause_aware_picking=true
