@@ -20,16 +20,7 @@ func _ready():
 	level = 1
 	connect('input_received', angel, '_input_received')
 	connect('input_received', devil, '_input_received')
-	
-	var _levelData:Array = []
-	print(LevelsData.custom_level)
-	
-	if LevelsData.custom_level.size() > 0:
-		_levelData = LevelsData.custom_level[level-1].duplicate()
-	else:
-		_levelData = LevelsData.get_level_data(level).duplicate()
-		
-	levelController.initialize_level(_levelData)
+	levelController.initialize_level(get_level_data())
 
 
 func _process(delta):
@@ -103,8 +94,7 @@ func _on_level_cleared():
 	show_level_summary()
 		
 func _on_exittomenu_pressed():
-	LevelsData.custom_level = []
-	get_tree().change_scene("res://Title.tscn")
+	get_tree().change_scene("res://MainMenu.tscn")
 	return	
 
 func show_level_summary():
@@ -124,8 +114,27 @@ func show_level_summary():
 	
 func advance():
 	$LevelSummary.visible = false
-	if LevelsData.level_exists(level):
-		levelController.initialize_level(LevelsData.get_level_data(level))
+	var _levelData = get_level_data()
+	if _levelData.size() > 0:
+		levelController.initialize_level(_levelData)
 	else:
 		print('You win!!')
+		if LevelsData.custom_level.size() > 0:
+			get_tree().change_scene("res://Editor.tscn")
+		else:
+			get_tree().change_scene("res://Title.tscn")
 	
+func get_level_data() -> Array:
+	var _levelData:Array = []
+	print(LevelsData.custom_level)
+	if LevelsData.custom_level.size() >= level:
+		_levelData = LevelsData.custom_level[level-1].duplicate()
+	elif LevelsData.level_exists(level):
+		_levelData = LevelsData.get_level_data(level).duplicate()
+	
+	if _levelData.size() < 1:
+		return []
+	elif (_levelData.size() - 108) % 3 != 0:
+		return []
+	else:
+		return _levelData
