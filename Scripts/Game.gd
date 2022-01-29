@@ -39,6 +39,7 @@ func _process(delta):
 			dir = Vector2.DOWN
 		if Input.is_action_just_pressed("ui_left"):
 			dir = Vector2.LEFT
+			dir = Vector2.LEFT
 		if Input.is_action_just_pressed("ui_right"):
 			dir = Vector2.RIGHT
 			

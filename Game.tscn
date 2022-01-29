@@ -118,15 +118,15 @@ __meta__ = {
 
 [node name="FallSplat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -30.0
+volume_db = 6.0
 
 [node name="NopeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0
+volume_db = -6.0
 
 [node name="Good" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -30.0
+volume_db = -6.0
 
 [connection signal="level_initialized" from="Level" to="." method="_on_Level_level_initialized"]
 [connection signal="game_over" from="Angel" to="." method="game_over"]
