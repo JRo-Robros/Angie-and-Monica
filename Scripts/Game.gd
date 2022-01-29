@@ -39,7 +39,6 @@ func _process(delta):
 			dir = Vector2.DOWN
 		if Input.is_action_just_pressed("ui_left"):
 			dir = Vector2.LEFT
-			dir = Vector2.LEFT
 		if Input.is_action_just_pressed("ui_right"):
 			dir = Vector2.RIGHT
 			
@@ -92,6 +91,9 @@ func _on_level_cleared():
 	else:
 		print('You win!!')
 		
+func _on_exittomenu_pressed():
+	return	
+
 #func show_level_summary():
 #	$VBoxContainer.visible = true
 #	$VBoxContainer/ColorRect/LevelName.append_bbcode("/n/nGreat Job!")
