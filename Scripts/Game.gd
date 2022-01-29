@@ -16,10 +16,16 @@ func _ready():
 	connect('input_received', angel, '_input_received')
 	connect('input_received', devil, '_input_received')
 	
+	var _levelData:Array = []
+	print(LevelsData.custom_level)
+	
 	if LevelsData.custom_level.size() > 0:
-		levelController.initialize_level(LevelsData.custom_level[level-1])
+		_levelData = LevelsData.custom_level[level-1].duplicate()
 	else:
-		levelController.initialize_level( LevelsData.get_level_data(level) )
+		_levelData = LevelsData.get_level_data(level).duplicate()
+		
+	levelController.initialize_level(_levelData)
+
 
 func _process(delta):
 	if receive_input >= 2:
@@ -92,6 +98,8 @@ func _on_level_cleared():
 		print('You win!!')
 		
 func _on_exittomenu_pressed():
+	LevelsData.custom_level = []
+	get_tree().change_scene("res://Title.tscn")
 	return	
 
 #func show_level_summary():

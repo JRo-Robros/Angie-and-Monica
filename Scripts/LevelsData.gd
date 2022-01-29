@@ -43,26 +43,27 @@ func level_exists(level) -> bool:
 
 func set_custom_level(_inputString:String) -> void:
 	if _inputString == "":
-		return	
+		return
 		
+	push_warning(_inputString)
 	var data = JSON.parse(_inputString)
 	
 	if typeof(data.result) == TYPE_ARRAY:
 		if data.result.size() < 1: 
-			push_error("Data Format Error: 1")
+			push_warning("Data Format Error: 1")
 			return
 		if not (data.result[0] is Array):
 			if data.result.size() < 100:
-				push_error("Data Format Error: 2")
+				push_warning("Data Format Error: 2")
 				return
 			print("One Custom Level")
 			custom_level.push_back(data.result)
 			return 
 		if data.result[0].size() < 100:
-			push_error("Data Format Error: 3")
+			push_warning("Data Format Error: 3")
 			return
 	else:
-		push_error("Data Format Error: 0")
+		push_warning("Data Format Error: 0")
 		return
 		
 	print("Multiple Custom Levels")

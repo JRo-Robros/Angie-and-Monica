@@ -47,6 +47,8 @@ func initialize_level(_levelData:Array) -> void:
 		
 	angel.position = Vector2(position.x + (33 * angelOrigin.x), position.y + 33 + (33 * angelOrigin.y))
 	devil.position = Vector2(position.x + (33 * devilOrigin.x), position.y + 33 + (33 * devilOrigin.y))
-		
+	
+	#TODO: Call On Enter Tile for Angel and Demon
+	
 	emit_signal("level_initialized")
 	return
