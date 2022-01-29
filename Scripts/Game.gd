@@ -15,7 +15,11 @@ func _ready():
 	level = 1
 	connect('input_received', angel, '_input_received')
 	connect('input_received', devil, '_input_received')
-	levelController.initialize_level( LevelsData.get_level_data(level) )
+	
+	if LevelsData.custom_level.size() > 0:
+		levelController.initialize_level(LevelsData.custom_level[level-1])
+	else:
+		levelController.initialize_level( LevelsData.get_level_data(level) )
 
 func _process(delta):
 	if receive_input >= 2:
@@ -79,6 +83,7 @@ func _on_level_cleared():
 	devil.is_active = false
 	level += 1
 	receive_input = 0
+	$Good.play()
 	yield(get_tree().create_timer(0.5), "timeout")
 #	show_level_summary()
 	if LevelsData.level_exists(level):

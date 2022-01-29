@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Nope.wav-113a4b2402f79b4ddd3de9a7fa62ce68.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Nope.wav"
+dest_files=[ "res://.import/Nope.wav-113a4b2402f79b4ddd3de9a7fa62ce68.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

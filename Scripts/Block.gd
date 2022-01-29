@@ -15,6 +15,7 @@ func check_move(dir:Vector2) -> bool:
 	checker.cast_to = dir.normalized() * 20
 	checker.force_raycast_update()
 	if checker.is_colliding():
+		get_parent().get_parent().get_node('NopeSound').play()
 		return false
 	yield(move(dir), 'completed')
 	return true
@@ -23,9 +24,13 @@ func push(dir, pusher):
 	match pusher:
 		'Angel':
 			if blockType == 1 or blockType == 3:
+				if blockType == 1:
+					get_parent().get_parent().get_node('NopeSound').play()
 				return false
 		'Devil':
 			if blockType == 0 or blockType == 3:
+				if blockType == 0:
+					get_parent().get_parent().get_node('NopeSound').play()
 				return false
 	return check_move(dir)
 	

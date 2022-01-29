@@ -28,7 +28,7 @@ func set_block_type(type):
 func _unhandled_key_input(event):
 	if active and event.pressed and not keyDown:
 		keyDown = true
-		print(event.physical_scancode)
+		print("scancode: " + String(event.physical_scancode))
 		match event.physical_scancode:
 			48:
 				set_tile_type(0)
