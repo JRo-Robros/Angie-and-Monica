@@ -24,7 +24,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 34, 34 )
 
 [node name="Blocks" type="Sprite" parent="."]
-position = Vector2( 78, 147 )
+position = Vector2( 75, 82 )
 texture = ExtResource( 5 )
 
 [node name="Terrain" type="Sprite" parent="."]
@@ -35,25 +35,23 @@ texture = ExtResource( 2 )
 margin_left = 22.0
 margin_top = 43.0
 margin_right = 198.0
-margin_bottom = 91.0
+margin_bottom = 60.0
 rect_pivot_offset = Vector2( 8, -17 )
-text = "1      2      3       4       5      6
-
-0 - clear tile"
+text = "1      2      3       4       5      6"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 22.0
-margin_top = 164.0
-margin_right = 198.0
-margin_bottom = 263.0
+margin_left = 19.0
+margin_top = 99.0
+margin_right = 195.0
+margin_bottom = 185.0
 rect_pivot_offset = Vector2( 8, -17 )
 text = "q      w       e       r
 
+0 - clear tile
 9 - clear block
-
 a - set angel start point
 d - set devil start point"
 __meta__ = {
@@ -62,9 +60,9 @@ __meta__ = {
 
 [node name="Output" type="TextEdit" parent="."]
 margin_left = 11.0
-margin_top = 280.0
-margin_right = 192.0
-margin_bottom = 337.0
+margin_top = 207.0
+margin_right = 214.0
+margin_bottom = 313.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 wrap_enabled = true
@@ -73,21 +71,21 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 196.0
-margin_top = 327.0
-margin_right = 226.0
-margin_bottom = 347.0
-text = "Go"
+margin_left = 81.0
+margin_top = 320.0
+margin_right = 139.0
+margin_bottom = 340.0
+text = "Encode"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 196.0
-margin_top = 304.0
-margin_right = 238.0
-margin_bottom = 324.0
-text = "Load"
+margin_left = 150.0
+margin_top = 320.0
+margin_right = 211.0
+margin_bottom = 340.0
+text = "Decode"
 __meta__ = {
 "_edit_use_anchors_": false
 }

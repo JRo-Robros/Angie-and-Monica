@@ -5,6 +5,7 @@ var index:int = 0
 var tile_type:int = 0
 var block_type:int = 0
 var active = false
+var keyDown = false
 
 onready var tile_sprite = $TileSprite
 onready var block_sprite = $BlockSprite
@@ -25,7 +26,8 @@ func set_block_type(type):
 	_set_block_type(type)
 
 func _unhandled_key_input(event):
-	if active and !event.pressed:
+	if active and event.pressed and not keyDown:
+		keyDown = true
 		print(event.physical_scancode)
 		match event.physical_scancode:
 			48:
@@ -64,6 +66,7 @@ func _on_EditTile_mouse_entered():
 
 
 func _on_EditTile_mouse_exited():
+	keyDown = false
 	active = false
 	$ColorRect.self_modulate = Color(0.12, 0.03, 0.14)	
 	
