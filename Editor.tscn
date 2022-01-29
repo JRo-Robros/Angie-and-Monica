@@ -82,4 +82,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button2" type="Button" parent="."]
+margin_left = 196.0
+margin_top = 304.0
+margin_right = 238.0
+margin_bottom = 324.0
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Button" to="." method="make_level"]
+[connection signal="pressed" from="Button2" to="." method="load_from_input"]

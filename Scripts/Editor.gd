@@ -15,6 +15,7 @@ var parTime := 300
 
 var tile := preload('res://EditTile.tscn')
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in 100:
@@ -98,4 +99,17 @@ func initialize_level(_levelData:Array) -> void:
 	devil.position = Vector2(position.x + (33 * devilOrigin.x), position.y + 33 + (33 * devilOrigin.y))
 		
 	emit_signal("level_initialized")
+	return
+
+func load_from_input() -> void:
+	load_from_string(get_node("Output").text)
+	return
+	
+func load_from_string(_inputString:String) -> void:
+	var data = JSON.parse(_inputString)
+	if typeof(data.result) == TYPE_ARRAY:
+		initialize_level(data.result)
+	else:
+		push_error("Unexpected results.")
+
 	return
