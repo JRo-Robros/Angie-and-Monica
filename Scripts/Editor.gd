@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var angel = get_node("Angel")
+onready var devil = get_node('Devil')
 
 var tiles = []
 var editTiles = []
@@ -28,9 +30,11 @@ func _ready():
 
 func set_angel_origin(coord:Vector2):
 	angel_origin = coord
+	angel.position = Vector2(coord.x * 33 + 250, coord.y * 34 + 20)
 	
 func set_devil_origin(coord:Vector2):
 	devil_origin = coord
+	devil.position = Vector2(coord.x * 33 + 250, coord.y * 34 + 20)
 
 func add_rem_block(coord, type):
 	var key = str(coord)
