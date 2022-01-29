@@ -97,6 +97,7 @@ func check_move(dir:Vector2, prevent_infinite = false) -> bool:
 					return !coll.is_reversed
 		if coll.has_method('push'):
 			return coll.push(dir, self.name)
+	$Walk.play()
 	return true
 
 func character_dies():

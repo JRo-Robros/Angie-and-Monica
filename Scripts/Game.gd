@@ -39,7 +39,6 @@ func _process(delta):
 			dir = Vector2.RIGHT
 			
 		if dir != Vector2.ZERO:
-			$Walk.play()
 			increment_moves()
 			receive_input = 0
 			emit_signal("input_received", dir)

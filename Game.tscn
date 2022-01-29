@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Angel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Devil.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Assets/SFX/FallSplat.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/SFX/SoftNope.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/SFX/Good.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/SFX/Walk.wav" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -127,11 +126,7 @@ volume_db = -10.0
 
 [node name="Good" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -10.0
-
-[node name="Walk" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = -8.0
+volume_db = -30.0
 
 [connection signal="level_initialized" from="Level" to="." method="_on_Level_level_initialized"]
 [connection signal="game_over" from="Angel" to="." method="game_over"]
