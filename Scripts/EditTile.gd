@@ -25,11 +25,7 @@ func set_tile_type(type):
 func set_block_type(type):
 	block_type = type
 	get_parent().add_rem_block(grid_coord, type)
-	if type != 0:
-		block_sprite.visible = true
-		block_sprite.region_rect = Rect2(type * 34 - 34, 0, 34, 34)
-	else:
-		block_sprite.visible = false
+	_set_block_type(type)
 
 func _unhandled_key_input(event):
 	if active and !event.pressed:
@@ -72,4 +68,11 @@ func _on_EditTile_mouse_entered():
 
 func _on_EditTile_mouse_exited():
 	active = false
-	$ColorRect.self_modulate = Color(0.12, 0.03, 0.14)
+	$ColorRect.self_modulate = Color(0.12, 0.03, 0.14)	
+	
+func _set_block_type(type:int):
+	if type != 0:
+		block_sprite.visible = true
+		block_sprite.region_rect = Rect2(type * 34 - 34, 0, 34, 34)
+	else:
+		block_sprite.visible = false
