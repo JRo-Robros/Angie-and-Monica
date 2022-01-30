@@ -21,7 +21,7 @@ const LEVELS:Array = [
 	[9,0,3,9,1,3,9,2,3,9,3,3,9,4,3,9,5,3,9,6,3,9,7,3,9,8,3,9,9,3,8,9,3,7,9,3,6,9,3,5,9,3,4,9,3,3,9,3,2,9,3,1,9,3,0,9,3,0,8,3,0,6,3,0,7,3,0,5,3,0,4,3,0,3,3,0,2,3,0,1,3,0,0,3,1,0,3,2,0,3,3,0,3,4,0,3,5,0,3,6,0,3,7,0,3,8,0,3,6,2,3,5,2,3,7,3,3,7,4,3,7,2,3,7,5,3,4,2,3,3,2,3,2,2,3,4,4,3,5,4,3,7,6,3,7,7,3,6,7,3,5,7,3,4,7,3,3,7,3,2,7,3,3,5,3,2,5,3,1,5,3,2,3,3,5,5,3,6,6,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,5,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8,2,7,1,300,26,"I didn't know this was multiple-choice!","Two Paths"],
 	[8,3,3,7,4,3,0,0,0,1,1,1,1,0,0,0,0,5,4,4,4,4,1,6,5,0,0,4,4,4,4,1,6,6,6,0,6,4,4,4,0,0,6,6,6,6,6,4,5,0,0,0,0,5,6,6,6,6,5,0,0,0,0,5,6,6,6,6,6,5,0,0,5,6,6,6,0,6,6,6,5,5,6,6,6,0,0,6,6,6,6,6,6,6,6,0,0,0,0,6,6,6,6,0,0,0,9,5,9,4,300,9,"Tasty but twisty","MMMMMMMM, Donut"],
 	[2,8,3,2,2,3,3,2,0,3,8,0,4,7,0,4,6,0,4,5,0,4,4,0,4,3,0,3,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,6,1,1,1,5,1,0,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,0,0,1,3,3,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,5,5,5,300,24,"How'd she even get in there?","A Fiend in Need"],
-	[1,4,3,1,5,3,2,5,3,2,4,3,3,4,3,3,5,3,3,1,1,1,2,1,1,3,1,3,3,1,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,6,1,1,1,1,5,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,4,1,3,0,0,1,1,1,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,0,2,8,2,2,300,42,"Sometimes Monica has to help Angie","Uneasy Partnership"],
+	[1,4,3,1,5,3,2,5,3,2,4,3,3,4,3,3,5,3,3,1,1,1,2,1,1,3,1,3,3,1,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,6,1,1,1,1,5,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,4,1,3,0,0,1,1,1,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,0,2,8,2,2,300,37,"Sometimes Monica has to help Angie","Uneasy Partnership"],
 	[6,4,3,6,5,3,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,4,1,1,6,1,1,5,1,1,1,1,0,0,0,1,1,0,0,0,1,1,0,0,1,1,1,1,0,0,1,1,4,1,1,4,1,1,4,1,4,1,1,1,1,1,4,1,1,4,1,0,1,1,0,0,0,0,1,1,0,0,0,1,0,0,0,0,1,0,0,0,7,0,2,300,17,"Na Na Na Na Na Na Na Na", "Does that look like someone?"],
 	[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,1,1,3,0,0,0,0,1,3,3,3,3,1,0,0,0,0,1,3,6,5,3,1,0,0,0,0,1,3,4,4,3,1,0,0,0,0,1,3,3,3,3,1,0,0,0,0,3,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,8,2,1,7,300,23,"","Sticky Situation"]
 ]
@@ -104,15 +104,30 @@ const dialogues = [
 	"[color=#8fd3ff]I think I saw a cute rabbit![/color]",
 	"[color=#c32454][right]...it was delicious.[/right][/color]"],
 	["[color=#8fd3ff]That was nice![/color]"],
-	["[color=#c32454][right]You tripped.[/right][/color]"]
+	["[color=#c32454][right]You tripped.[/right][/color]"],
+#	3star
+	["[color=#8fd3ff]We're a great team when we work together![/color]","[color=#c32454][right]Whatever.[/right][/color]"],
+	["[color=#c32454][right]I guess that was pretty good.[/right][/color]","[color=#8fd3ff]That was fantastic![/color]"],
+#	2star
+	["[color=#8fd3ff]That was a great effort![/color]","[color=#c32454][right]Could've been better.[/right][/color]"],
+	["[color=#8fd3ff]I'm glad to spend so much time together.[/color]","[color=#c32454][right]Could you be any more annoying?![/right][/color]"],
+#	1star
+	["[color=#c32454][right]Try not to slow me down next time.[/right][/color]","[color=#8fd3ff]That was tough, but hard work got us through.[/color]"],
+	["[color=#8fd3ff]Sometimes it's good to take your time.[/color]","[color=#c32454][right]Speak for yourself... I got places to be![/right][/color]"],
+#	Story
+	["[color=#c32454][right]I suppose you want me to thank you.[/right][/color]","[color=#8fd3ff]The look on your face is gratitude enough.[/color]"],
+	["[color=#c32454][right]Lucky for you I'm awesome![/right][/color]","[color=#8fd3ff]You are.  Thank you so much![/color]"],
+	["[color=#8fd3ff]We all need a helping hand sometimes.[/color]","[color=#c32454][right]I had it under control.[/right][/color]"]
 ]
 
 const specificDialogues = {
-	"1": [1,2,3,4,5,6,7,8],
-	"2": [9,10,11],
-	"3": [12,13,14],
-	"4": [15,16,17],
-	"Welcome": [1,2,3]
+	"1": [35,36],
+	"2": [33,34],
+	"3": [31,32],
+	"4": [],
+	"Welcome": [1,2,3],
+	"A Fiend in Need":[37,39],
+	"Uneasy Partnership": [38]
 }
 
 func getDialogue(levelName:String, stars:String):
