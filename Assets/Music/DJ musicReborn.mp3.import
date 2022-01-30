@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/DJ musicReborn.mp3-b06517040e7f6057a0f7571cec475a03.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/DJ musicReborn.mp3"
+dest_files=[ "res://.import/DJ musicReborn.mp3-b06517040e7f6057a0f7571cec475a03.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

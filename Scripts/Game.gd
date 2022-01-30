@@ -193,13 +193,13 @@ func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]",
 			"percent_visible",
 			0,
 			1,
-			0.5,
+			0.75,
 			Tween.TRANS_LINEAR,
 			Tween.EASE_IN_OUT
 		)
 		tween.start()
 		yield(tween, 'tween_completed')
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(1.2), "timeout")
 		box.percent_visible = 0
 		yield(get_tree().create_timer(0.2), "timeout")
 	$LevelSummary/VBoxContainer/Advance.visible = true
