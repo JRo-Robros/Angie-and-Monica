@@ -132,6 +132,36 @@ const specificDialogues = {
 	"Uneasy Partnership": [38]
 }
 
+const specificDialogues = {
+	"1": [1,2,3,4,5,6,7,8],
+	"2": [9,10,11],
+	"3": [12,13,14],
+	"4": [15,16,17],
+	"Welcome": [22,23,25,29],
+	"The Long and Winding Road": [7,24,15,12,10,21],
+	"Against the Wall": [30,29,23,22,19],
+	"Trading Places": [1,15,21,25,26,30],
+	"Rocks and Hard Places": [15,19,24,26,25,27],
+	"Push it": [1,2,3,10,23,28],
+	"Boxes blocks us": [1,2,3,12],
+	"Heavy Metal": [0,4,5,19,24,28],
+	"It belongs in a museum!": [10,13,16,21,30],
+	"Is This Sparta?!": [7,7,19,27,10],
+	"Walking into Spiderwebs": [0,9,20,28],
+	"Stay Put": [6,1,0,25,29],
+	"Rocks and Harder Places": [9,10,11,21,27],
+	"Switcharoo!": [8,10,28,29],
+	"Do-si-do": [6,9,12,14,15,25],
+	"Personal Space": [6,8,9,29,30],
+	"Double Back": [7,11,15,21,26],
+	"Two Paths": [6,10,13,13],
+	"MMMMMMMM, Donut": [8,12,14,15,26],
+	"A Fiend in Need": [1,2,3,12,16,17,27],
+	"Uneasy Partnership": [18,18,20,4],
+	"Does that look like someone?": [6,7,27,25,19],
+	"Sticky Situation": [0,9,16,17,20]
+}
+
 func getDialogue(levelName:String, stars:String):
 	if specificDialogues.has(levelName):
 		return dialogues[specificDialogues[levelName][randi() % specificDialogues[levelName].size()]]
