@@ -122,6 +122,8 @@ func show_level_summary():
 	dialogue(LevelsData.getDialogue(levelName, stars))
 	
 func advance():
+	$AngiePortrait.offset = Vector2(-200,0)
+	$MonicaPortrait.offset = Vector2(180,0)
 	level += 1
 	$LevelSummary.visible = false
 	var _levelData = get_level_data()
@@ -151,6 +153,26 @@ func get_level_data() -> Array:
 		
 func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]","[color=#c32454][center]hi[/center][/color]"]):
 	var box = $LevelSummary/VBoxContainer/DialogueBox
+	tween.interpolate_property(
+		$AngiePortrait,
+		"offset",
+		Vector2(-200,0),
+		Vector2.ZERO,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN_OUT
+	)
+	tween.interpolate_property(
+		$MonicaPortrait,
+		"offset",
+		Vector2(180,0),
+		Vector2.ZERO,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN_OUT
+	)
+	tween.start()
+	yield(tween, 'tween_completed')
 	for line in dialogue:
 		box.percent_visible = 0
 		box.bbcode_text = line

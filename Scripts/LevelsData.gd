@@ -117,14 +117,16 @@ const dialogues = [
 #	Story
 	["[color=#c32454][right]I suppose you want me to thank you.[/right][/color]","[color=#8fd3ff]The look on your face is gratitude enough.[/color]"],
 	["[color=#c32454][right]Lucky for you I'm awesome![/right][/color]","[color=#8fd3ff]You are.  Thank you so much![/color]"],
-	["[color=#8fd3ff]We all need a helping hand sometimes.[/color]","[color=#c32454][right]I had it under control.[/right][/color]"]
+	["[color=#8fd3ff]We all need a helping hand sometimes.[/color]","[color=#c32454][right]I had it under control.[/right][/color]"],
+#	4star
+	["[color=#c32454][right]Hoooo-leeeeee. . . . . .[/right][/color]","[color=#8fd3ff]Don't you dare![/color]"]
 ]
 
 const specificDialogues = {
 	"1": [35,36],
 	"2": [33,34],
 	"3": [31,32],
-	"4": [],
+	"4": [40],
 	"Welcome": [1,2,3],
 	"A Fiend in Need":[37,39],
 	"Uneasy Partnership": [38]
