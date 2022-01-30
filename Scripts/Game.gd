@@ -99,14 +99,18 @@ func _on_exittomenu_pressed():
 
 func show_level_summary():
 	$LevelSummary.visible = true
+	var stars = "1"
 	var bd = "[center]Well Done!\n\n"
 	bd += "Moves: " + str(moves) + "\n\n"
 	if moves-levelMoves < 0:
 		bd += "New Record!!"
+		stars = "4"
 	elif moves-levelMoves == 0:
 		bd += "3 Stars"
+		stars = "3"
 	elif moves-levelMoves < 3:
 		bd += "2 Stars"
+		stars = "2"
 	else:
 		bd += "1 Star"
 	bd += "\n\n[/center]"
@@ -115,7 +119,7 @@ func show_level_summary():
 	$LevelSummary/VBoxContainer/Advance.visible = false
 	$LevelSummary/VBoxContainer/Retry.visible = false
 	
-	dialogue()
+	dialogue(LevelsData.getDialogue(levelName, stars))
 	
 func advance():
 	level += 1
@@ -148,6 +152,7 @@ func get_level_data() -> Array:
 func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]","[color=#c32454][center]hi[/center][/color]"]):
 	var box = $LevelSummary/VBoxContainer/DialogueBox
 	for line in dialogue:
+		box.percent_visible = 0
 		box.bbcode_text = line
 		tween.interpolate_property(
 			box,
@@ -165,3 +170,4 @@ func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]",
 		yield(get_tree().create_timer(0.2), "timeout")
 	$LevelSummary/VBoxContainer/Advance.visible = true
 	$LevelSummary/VBoxContainer/Retry.visible = true
+	$LevelSummary/VBoxContainer/Advance.grab_focus()
