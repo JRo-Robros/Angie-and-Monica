@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/MandA_End.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Music/VictoryMusic.mp3" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Scripts/Congrats.gd" type="Script" id=4]
+[ext_resource path="res://Congrats.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
