@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/DJ FresnelMoon.mp3-15ba40b7849c848a3b0c54d0f35f4b86.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/DJ FresnelMoon.mp3"
+dest_files=[ "res://.import/DJ FresnelMoon.mp3-15ba40b7849c848a3b0c54d0f35f4b86.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

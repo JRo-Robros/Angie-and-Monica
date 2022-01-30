@@ -69,7 +69,7 @@ texture = ExtResource( 1 )
 position = Vector2( 86, 180 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 script = ExtResource( 2 )
 
@@ -77,26 +77,27 @@ script = ExtResource( 2 )
 position = Vector2( 494, 180 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 10 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 script = ExtResource( 2 )
 
 [node name="hud_level" type="RichTextLabel" parent="."]
-margin_left = 91.0
-margin_top = 299.0
-margin_right = 490.0
-margin_bottom = 317.0
+margin_left = 2.0
+margin_top = 303.0
+margin_right = 573.0
+margin_bottom = 347.0
 custom_colors/default_color = Color( 0.188235, 0.882353, 0.72549, 1 )
 custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = true
-bbcode_text = "[wave amp=15 freq=7]Any Key to Start, Arrow Keys to Move[/wave]"
+bbcode_text = "[wave amp=15 freq=7][center]Any Key to Start, Arrow Keys to Move[/center][/wave]"
 text = "Any Key to Start, Arrow Keys to Move"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextEdit" type="TextEdit" parent="."]
+visible = false
 margin_top = 328.0
 margin_right = 575.0
 margin_bottom = 350.0

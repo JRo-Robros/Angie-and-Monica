@@ -1,22 +1,39 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Angel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Devil.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
-[ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=5]
 [ext_resource path="res://Assets/SFX/FallSplat.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/SFX/SoftNope.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/SFX/Good.wav" type="AudioStream" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
+[ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/Angie_Smiling.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Monica_Smirking.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Music/StarfruitSky.mp3" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Music/DJ musicReborn.mp3" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 160, 3 )
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.180392, 0.133333, 0.184314, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 9 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2( 170, -4 )
@@ -35,8 +52,10 @@ margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/default_color = Color( 0.188235, 0.882353, 0.72549, 1 )
-custom_fonts/normal_font = SubResource( 1 )
-text = "Level "
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "Level"
+text = "Level"
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,9 +63,9 @@ __meta__ = {
 
 [node name="Move Counter" type="Label" parent="."]
 margin_left = 27.0
-margin_top = 300.0
-margin_right = 67.0
-margin_bottom = 314.0
+margin_top = 273.0
+margin_right = 85.0
+margin_bottom = 287.0
 text = "Moves: 0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -74,40 +93,71 @@ shape = SubResource( 2 )
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color( 0.909804, 0.231373, 0.231373, 1 )
-margin_left = 13.0
-margin_top = 325.0
-margin_right = 125.0
-margin_bottom = 345.0
+margin_left = 12.0
+margin_top = 295.0
+margin_right = 124.0
+margin_bottom = 315.0
 text = "Restart Level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Button2" type="Button" parent="."]
+self_modulate = Color( 0.643137, 0.701961, 0.129412, 1 )
+margin_left = 12.0
+margin_top = 320.0
+margin_right = 124.0
+margin_bottom = 340.0
+text = "Exit To Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AngiePortrait" type="Sprite" parent="."]
+position = Vector2( 96, 150 )
+z_index = 2
+texture = ExtResource( 10 )
+offset = Vector2( -200, 0 )
+
+[node name="MonicaPortrait" type="Sprite" parent="."]
+position = Vector2( 504, 150 )
+z_index = 2
+texture = ExtResource( 11 )
+offset = Vector2( 180, 0 )
+
+[node name="LevelSummary" type="Panel" parent="."]
 visible = false
-margin_left = 111.0
-margin_top = 1.0
-margin_right = 508.0
-margin_bottom = 346.0
+margin_right = 575.0
+margin_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSummary"]
+margin_right = 122.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 575, 350 )
 rect_pivot_offset = Vector2( -374, 182 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
-margin_right = 397.0
-margin_bottom = 345.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Spacer3" type="Control" parent="LevelSummary/VBoxContainer"]
+margin_right = 3.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 3, 60 )
 
-[node name="LevelName" type="RichTextLabel" parent="VBoxContainer/Panel"]
+[node name="Breakdown" type="RichTextLabel" parent="LevelSummary/VBoxContainer"]
+margin_top = 154.0
 margin_right = 397.0
-margin_bottom = 15.0
+margin_bottom = 166.0
 custom_colors/default_color = Color( 0.188235, 0.882353, 0.72549, 1 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Level Summary[/center]"
 text = "Level Summary"
@@ -116,17 +166,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Advance" type="Button" parent="LevelSummary/VBoxContainer"]
+margin_left = 158.0
+margin_top = 170.0
+margin_right = 238.0
+margin_bottom = 190.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Continue"
+
+[node name="Spacer" type="Control" parent="LevelSummary/VBoxContainer"]
+margin_right = 3.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 3, 3 )
+
+[node name="Retry" type="Button" parent="LevelSummary/VBoxContainer"]
+self_modulate = Color( 0.909804, 0.231373, 0.231373, 1 )
+margin_left = -99.0
+margin_top = 294.0
+margin_right = 43.0
+margin_bottom = 314.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Retry Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="LevelSummary/VBoxContainer"]
+margin_right = 3.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 3, 20 )
+
+[node name="DialogueBox" type="RichTextLabel" parent="LevelSummary/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 60 )
+rect_clip_content = false
+bbcode_enabled = true
+
+[node name="NopeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.0
+
 [node name="FallSplat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -30.0
 
-[node name="NopeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-volume_db = -10.0
-
 [node name="Good" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -30.0
+volume_db = -6.0
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="level_initialized" from="Level" to="." method="_on_Level_level_initialized"]
 [connection signal="game_over" from="Angel" to="." method="game_over"]
@@ -135,3 +228,6 @@ volume_db = -30.0
 [connection signal="stop_input" from="Devil" to="." method="stop_input"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_Bounds_body_entered"]
 [connection signal="pressed" from="Button" to="." method="_reset_level"]
+[connection signal="pressed" from="Button2" to="." method="_on_exittomenu_pressed"]
+[connection signal="pressed" from="LevelSummary/VBoxContainer/Advance" to="." method="advance"]
+[connection signal="pressed" from="LevelSummary/VBoxContainer/Retry" to="." method="_reset_level"]

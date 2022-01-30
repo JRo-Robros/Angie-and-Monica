@@ -2,7 +2,7 @@ extends Node2D
 
 onready var angel = get_parent().get_node("Angel")
 onready var devil = get_parent().get_node('Devil')
-onready var hud_level = get_parent().get_node('hud_level')
+onready var game = get_parent()
 var level_data:Array
 
 var tile := preload('res://Tile.tscn')
@@ -25,11 +25,12 @@ func initialize_level(_levelData:Array) -> void:
 		i.queue_free()
 	level_data = _levelData.duplicate(true)
 	move_count = 0
-	hud_level.text = _levelData.pop_back()
-	hud_level.text += ":\n"
-	hud_level.text += _levelData.pop_back()
+	game.levelName = _levelData.pop_back()
+	game.levelDesc = _levelData.pop_back()
 	var moves = _levelData.pop_back()
+	game.levelMoves = moves
 	var time = _levelData.pop_back()
+	game.levelTime = time
 	var angelOrigin = Vector2(_levelData.pop_back(),_levelData.pop_back())
 	var devilOrigin = Vector2(_levelData.pop_back(),_levelData.pop_back())
 	for i in 100:
@@ -47,6 +48,8 @@ func initialize_level(_levelData:Array) -> void:
 		
 	angel.position = Vector2(position.x + (33 * angelOrigin.x), position.y + 33 + (33 * angelOrigin.y))
 	devil.position = Vector2(position.x + (33 * devilOrigin.x), position.y + 33 + (33 * devilOrigin.y))
-		
+	
+	#TODO: Call On Enter Tile for Angel and Demon
+	
 	emit_signal("level_initialized")
 	return

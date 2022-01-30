@@ -27,17 +27,27 @@ region_rect = Rect2( 0, 0, 34, 34 )
 position = Vector2( 75, 82 )
 texture = ExtResource( 5 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = 22.0
+margin_top = 43.0
+margin_right = 202.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 8, -17 )
+text = "1  2   3  4  5   6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Terrain" type="Sprite" parent="."]
 position = Vector2( 110, 22 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 22.0
-margin_top = 43.0
-margin_right = 198.0
-margin_bottom = 60.0
-rect_pivot_offset = Vector2( 8, -17 )
-text = "1      2      3       4       5      6"
+[node name="ColorRect" type="ColorRect" parent="Terrain"]
+margin_left = -67.0
+margin_top = -13.0
+margin_right = -35.0
+margin_bottom = 37.0
+color = Color( 0.168627, 0.152941, 0.2, 0.745098 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,12 +58,12 @@ margin_top = 99.0
 margin_right = 195.0
 margin_bottom = 185.0
 rect_pivot_offset = Vector2( 8, -17 )
-text = "q      w       e       r
+text = "q  w   e  r
 
 0 - clear tile
 9 - clear block
-a - set angel start point
-d - set devil start point"
+a - set angel
+d - set devil"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,7 +72,7 @@ __meta__ = {
 margin_left = 11.0
 margin_top = 207.0
 margin_right = 214.0
-margin_bottom = 313.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 wrap_enabled = true
@@ -71,24 +81,46 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 81.0
-margin_top = 320.0
-margin_right = 139.0
-margin_bottom = 340.0
+margin_left = 12.0
+margin_top = 298.0
+margin_right = 108.0
+margin_bottom = 318.0
 text = "Encode"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 150.0
-margin_top = 320.0
-margin_right = 211.0
-margin_bottom = 340.0
+margin_left = 119.0
+margin_top = 298.0
+margin_right = 213.0
+margin_bottom = 318.0
 text = "Decode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestLevelBtn" type="Button" parent="."]
+margin_left = 120.0
+margin_top = 323.0
+margin_right = 213.0
+margin_bottom = 343.0
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="Button" parent="."]
+margin_left = 12.0
+margin_top = 323.0
+margin_right = 107.0
+margin_bottom = 343.0
+text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="Button" to="." method="make_level"]
 [connection signal="pressed" from="Button2" to="." method="load_from_input"]
+[connection signal="pressed" from="TestLevelBtn" to="." method="_on_TestLevelBtn_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_ExitBtn_pressed"]
