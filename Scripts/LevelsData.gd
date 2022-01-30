@@ -127,16 +127,6 @@ const specificDialogues = {
 	"2": [33,34],
 	"3": [31,32],
 	"4": [40],
-	"Welcome": [1,2,3],
-	"A Fiend in Need":[37,39],
-	"Uneasy Partnership": [38]
-}
-
-const specificDialogues = {
-	"1": [1,2,3,4,5,6,7,8],
-	"2": [9,10,11],
-	"3": [12,13,14],
-	"4": [15,16,17],
 	"Welcome": [22,23,25,29],
 	"The Long and Winding Road": [7,24,15,12,10,21],
 	"Against the Wall": [30,29,23,22,19],
@@ -156,8 +146,8 @@ const specificDialogues = {
 	"Double Back": [7,11,15,21,26],
 	"Two Paths": [6,10,13,13],
 	"MMMMMMMM, Donut": [8,12,14,15,26],
-	"A Fiend in Need": [1,2,3,12,16,17,27],
-	"Uneasy Partnership": [18,18,20,4],
+	"A Fiend in Need": [1,2,3,12,16,17,27,37,39],
+	"Uneasy Partnership": [18,18,20,4,38],
 	"Does that look like someone?": [6,7,27,25,19],
 	"Sticky Situation": [0,9,16,17,20]
 }
