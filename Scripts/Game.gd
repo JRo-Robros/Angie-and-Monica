@@ -140,7 +140,6 @@ func advance():
 	if _levelData.size() > 0:
 		levelController.initialize_level(_levelData)
 	else:
-		print('You win!!')
 		get_tree().change_scene(LevelsData.get_exit_scene_path())
 
 
