@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Monica_Smirking.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Cloud_01.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cloud_02.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Music/DJ FresnelMoon.mp3" type="AudioStream" id=7]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.282353, 0.290196, 0.466667, 1 )
@@ -216,6 +217,11 @@ Ava Fritts
 https://cometcreations.itch.io
 
 "
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="UI/MenuButtons/CampaignBtn" to="." method="_on_CampaignBtn_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LevelEditorBtn" to="." method="_on_LevelEditorBtn_pressed"]

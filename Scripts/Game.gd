@@ -127,8 +127,9 @@ func show_level_summary():
 	$LevelSummary/VBoxContainer/Breakdown.bbcode_text = bd
 	$LevelSummary/VBoxContainer/Advance.visible = false
 	$LevelSummary/VBoxContainer/Retry.visible = false
-	
-	dialogue(LevelsData.getDialogue(levelName, stars))
+	var _dialogs = LevelsData.getDialogue(levelName, stars)
+	print(_dialogs)
+	dialogue(_dialogs)
 
 
 func advance():

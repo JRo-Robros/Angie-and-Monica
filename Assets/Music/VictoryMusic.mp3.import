@@ -11,5 +11,5 @@ dest_files=[ "res://.import/VictoryMusic.mp3-3b962e8b3cb9fb51f81608091188b3f5.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -180,12 +180,20 @@ func set_exit_scene(sceneName:String) -> void:
 	_exit_scene_path = "res://" + sceneName + ".tscn"
 
 func getDialogue(levelName:String, stars:String):
-	var _combined_dialogs = []
 	if specificDialogues.has(levelName):
-		_combined_dialogs.append_array(specificDialogues[levelName])
-	if specificDialogues.has(stars):
-		_combined_dialogs.append_array(specificDialogues[stars])
-	return _combined_dialogs[randi() % _combined_dialogs.size()]
+		return dialogues[specificDialogues[levelName][randi() % specificDialogues[levelName].size()]]
+	else:
+		return dialogues[specificDialogues[stars][randi() % specificDialogues[stars].size()]]
+
+#func getDialogue(levelName:String, stars:String) -> Array:
+#	var _combined_dialogs = []
+#	if specificDialogues.has(levelName):
+#		for d in specificDialogues[levelName]:
+#			_combined_dialogs.push_back(d)
+#	if specificDialogues.has(stars):
+#		for d in specificDialogues[stars]:
+#			_combined_dialogs.push_back(d)
+#	return _combined_dialogs[randi() % _combined_dialogs.size()]
 
 var custom_level:Array = []
 
