@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/StarfruitSky.mp3-6eb0c3574ca93c148653477e1b01462c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/StarfruitSky.mp3"
+dest_files=[ "res://.import/StarfruitSky.mp3-6eb0c3574ca93c148653477e1b01462c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

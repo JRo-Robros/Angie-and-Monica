@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/StepinWintre.mp3-9e9289b7f9b3c79b54a914cab1c94c61.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/StepinWintre.mp3"
+dest_files=[ "res://.import/StepinWintre.mp3-9e9289b7f9b3c79b54a914cab1c94c61.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

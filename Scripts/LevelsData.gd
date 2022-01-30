@@ -128,32 +128,32 @@ const dialogues = [
 ]
 
 const specificDialogues = {
-	"1": [35,36],
-	"2": [33,34],
+	"1": [35,36,25],
+	"2": [33,34,25],
 	"3": [31,32],
 	"4": [40],
-	"Welcome": [22,23,25,29],
+	"Welcome": [22,23,29],
 	"The Long and Winding Road": [7,24,15,12,10,21],
 	"Against the Wall": [30,29,23,22,19],
-	"Trading Places": [1,15,21,25,26,30],
-	"Rocks and Hard Places": [15,19,24,26,25,27],
+	"Trading Places": [1,15,21,26,30],
+	"Rocks and Hard Places": [15,19,24,26,27],
 	"Push it": [1,2,3,10,23,28],
 	"Boxes blocks us": [1,2,3,12],
 	"Heavy Metal": [0,4,5,19,24,28],
 	"It belongs in a museum!": [10,13,16,21,30],
 	"Is This Sparta?!": [7,7,19,27,10],
 	"Walking into Spiderwebs": [0,9,20,28],
-	"Stay Put": [6,1,0,25,29],
+	"Stay Put": [6,1,0,29],
 	"Rocks and Harder Places": [9,10,11,21,27],
 	"Switcharoo!": [8,10,28,29],
-	"Do-si-do": [6,9,12,14,15,25],
+	"Do-si-do": [6,9,12,14,15],
 	"Personal Space": [6,8,9,29,30],
 	"Double Back": [7,11,15,21,26],
 	"Two Paths": [6,10,13,13],
 	"MMMMMMMM, Donut": [8,12,14,15,26],
 	"A Fiend in Need": [1,2,3,12,16,17,27,37,39],
 	"Uneasy Partnership": [18,18,20,4,38],
-	"Does that look like someone?": [6,7,27,25,19],
+	"Does that look like someone?": [6,7,27,19],
 	"Sticky Situation": [0,9,16,17,20]
 }
 
@@ -166,10 +166,12 @@ func set_exit_scene(sceneName:String) -> void:
 	_exit_scene_path = "res://" + sceneName + ".tscn"
 
 func getDialogue(levelName:String, stars:String):
+	var _combined_dialogs = []
 	if specificDialogues.has(levelName):
-		return dialogues[specificDialogues[levelName][randi() % specificDialogues[levelName].size()]]
-	else:
-		return dialogues[specificDialogues[stars][randi() % specificDialogues[stars].size()]]
+		_combined_dialogs.append_array(specificDialogues[levelName])
+	if specificDialogues.has(stars):
+		_combined_dialogs.append_array(specificDialogues[stars])
+	return _combined_dialogs[randi() % _combined_dialogs.size()]
 
 var custom_level:Array = []
 
