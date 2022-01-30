@@ -26,6 +26,101 @@ const LEVELS:Array = [
 	[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,1,1,3,0,0,0,0,1,3,3,3,3,1,0,0,0,0,1,3,6,5,3,1,0,0,0,0,1,3,4,4,3,1,0,0,0,0,1,3,3,3,3,1,0,0,0,0,3,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,8,2,1,7,300,23,"","Sticky Situation"]
 ]
 
+const dialogues = [
+	["[color=#8fd3ff]If you get stuck, I’ll help you out![/color]",
+"[color=#c32454][right]No thanks, you’ll just make it worse![/right][/color]"],
+["[color=#c32454][right]Quit pushing me around, Angie![/right][/color]",
+"[color=#8fd3ff]I’m sorry, I didn’t mean to.[/color]"],
+["[color=#c32454][right]I wonder what’s in those boxes..[/right][/color]",
+"[color=#8fd3ff]Something fluffy maybe?[/color]",
+"[color=#c32454][right]..something delicious..[/right][/color]"],
+["[color=#8fd3ff]How many angels would it take to move two boxes?[/color]",
+"[color=#c32454][right]..does it matter? We only have one...[/right][/color]"],
+["[color=#c32454][right]You know, if I keep having to help you out, I might just leave you behind..[/right][/color]"],
+["[color=#c32454][right]Why can’t you push your own crates, Angie?[/right][/color]",
+"[color=#8fd3ff]No I don’t want to! I can’t touch those terrible cursed things![/color]"],
+["[color=#8fd3ff]You know, sometimes an angel just needs her space.[/color]",
+"[color=#c32454][right]Good riddance![/right][/color]"],
+["[color=#c32454][right]That last place kind of looked like a penguin..[/right][/color]",
+"[color=#8fd3ff]What?[/color]",
+"[color=#c32454][right]..I wonder if I could eat it...[/right][/color]",
+"[color=#8fd3ff]What?[/color]",
+"[color=#c32454][right]..what?[/right][/color]",
+"[color=#c32454][right]...[/right][/color]"],
+["[color=#8fd3ff]So contrary![/color]",
+"[color=#c32454][right]But backwards is better, you know.[/right][/color]"],
+["[color=#c32454][right]Watch out![/right][/color]"],
+["[color=#8fd3ff]We did it![/color]"],
+["[color=#c32454][right]It’s like a cross between a jungle and a fried chicken..[/right][/color]",
+"[color=#8fd3ff]The last puzzle?[/color]",
+"[color=#c32454][right]..your hair right now..[/right][/color]",
+"[color=#8fd3ff]EEEK![/color]"],
+["[color=#8fd3ff]Okay I admit it- I got a little confused on that one![/color]",
+"[color=#c32454][right]Ha! A little?[/right][/color]"],
+["[color=#c32454][right]..ugh.. It’s slightly claustrophobic in there.[/right][/color]",
+"[color=#8fd3ff]Clauster-what now?[/color]",
+"[color=#c32454][right]Fear of spiders. I think..[/right][/color]"],
+["[color=#8fd3ff]Slippery![/color]"],
+["[color=#c32454][right]You got a little mixed up there, didn’t you?[/right][/color]"],
+["[color=#c32454][right]A little help?[/right][/color]",
+"[color=#8fd3ff]Ahh... What about this?[/color]",
+"[color=#c32454][right]Nope.[/right][/color]",
+"[color=#8fd3ff]...Did that work?[/color]",
+"[color=#c32454][right]Nope.[/right][/color]",
+"[color=#8fd3ff]I give up![/color]",
+"[color=#c32454][right]...[/right][/color]"],
+["[color=#c32454][right]Ugh, so claustrophobic![/right][/color]",
+"[color=#8fd3ff]Just eat them![/color]",
+"[color=#c32454][right]What, the spiders, or the webs?[/right][/color]",
+"[color=#8fd3ff]No! Wait, what?[/color]"],
+["[color=#8fd3ff]Hey, next time let me out faster, Monica![/color]",
+"[color=#c32454][right]Muahahaha![/right][/color]",
+"[color=#8fd3ff]Wait, did you leave me in there on purpose?[/color]",
+"[color=#c32454][right]...[/right][/color]"],
+["[color=#c32454][right]What’d you have for lunch?[/right][/color]",
+"[color=#8fd3ff]Don’t ask an angel what she eats, Monica![/color]",
+"[color=#c32454][right]Hehee, I’ll bet you’re starving![/right][/color]",
+"[color=#c32454][right]I found a rat.[/right][/color]"],
+["[color=#8fd3ff]Amazing! That was quite a sticky situation![/color]"],
+["[color=#c32454][right]Did you see that?[/right][/color]",
+"[color=#8fd3ff]You mean the rainbow?[/color]",
+"[color=#c32454][right]No.. There was a frog.[/right][/color]",
+"[color=#c32454][right]It got away.[/right][/color]",
+"[color=#8fd3ff]That was easy![/color]",
+"[color=#c32454][right]You think?[/right][/color]"],
+["[color=#c32454][right]Wait... That was the whole thing?[/right][/color]"],
+["[color=#8fd3ff]Great job, Monica![/color]",
+"[color=#c32454][right]Well, someone had to figure it out.[/right][/color]"],
+["[color=#c32454][right]That went... well?[/right][/color]",
+"[color=#8fd3ff]Yeah, it was great![/color]",
+"[color=#c32454][right]Ugh.. I was being sarcastic.[/right][/color]"],
+["[color=#8fd3ff]Wow, that was confusing! I’m glad we made it alright![/color]",
+"[color=#c32454][right]No thanks to you..[/right][/color]"],
+["[color=#8fd3ff]So, how did I do?[/color]",
+"[color=#c32454][right]..heehee..[/right][/color]",
+"[color=#8fd3ff]What’s that supposed to mean?[/color]"],
+["[color=#c32454][right]I found a beetle...[/right][/color]",
+"[color=#c32454][right]...it was delicious.[/right][/color]",
+"[color=#8fd3ff]I think I saw a cute rabbit![/color]",
+"[color=#c32454][right]...it was delicious.[/right][/color]"],
+["[color=#8fd3ff]That was nice![/color]"],
+["[color=#c32454][right]You tripped.[/right][/color]"]
+]
+
+const specificDialogues = {
+	"1": [1,2,3,4,5,6,7,8],
+	"2": [9,10,11],
+	"3": [12,13,14],
+	"4": [15,16,17],
+	"Welcome": [1,2,3]
+}
+
+func getDialogue(levelName:String, stars:String):
+	if specificDialogues.has(levelName):
+		return dialogues[specificDialogues[levelName][randi() % specificDialogues[levelName].size()]]
+	else:
+		return dialogues[specificDialogues[stars][randi() % specificDialogues[stars].size()]]
+
 var custom_level:Array = []
 
 func _ready():
