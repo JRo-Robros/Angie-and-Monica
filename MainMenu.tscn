@@ -196,8 +196,26 @@ rect_min_size = Vector2( 0, 5 )
 margin_top = 143.0
 margin_right = 137.0
 margin_bottom = 163.0
-disabled = true
 text = "Credits"
+
+[node name="Credits" type="RichTextLabel" parent="UI"]
+visible = false
+margin_left = 214.0
+margin_top = 111.0
+margin_right = 557.0
+margin_bottom = 339.0
+text = "Concept, Design, Sprites, Programming:
+Jeremy Robinson
+
+Programming, Music:
+Ephraim Goodenough
+https://ldjam.com/users/good-enough
+
+Art:
+Ava Fritts
+https://cometcreations.itch.io
+
+"
 
 [connection signal="pressed" from="UI/MenuButtons/CampaignBtn" to="." method="_on_CampaignBtn_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LevelEditorBtn" to="." method="_on_LevelEditorBtn_pressed"]

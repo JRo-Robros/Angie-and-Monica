@@ -18,7 +18,7 @@ func _ready():
 
 func _on_CampaignBtn_pressed():
 	LevelsData.custom_level = []
-	LevelsData.set_exit_scene("MainMenu")
+	LevelsData.set_exit_scene("Congrats")
 	get_tree().change_scene("res://Game.tscn")
 	pass # Replace with function body.
 
@@ -33,4 +33,5 @@ func _on_SettingsBtn_pressed():
 
 
 func _on_CreditsBtn_pressed():
-	pass # Replace with function body.
+	$UI/Container.visible = !$UI/Container.visible
+	$UI/Credits.visible = !$UI/Container.visible
