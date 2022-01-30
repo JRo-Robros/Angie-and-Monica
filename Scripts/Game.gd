@@ -68,6 +68,11 @@ func _on_Bounds_body_entered(body):
 		body.on_tile(0)
 
 func _on_Level_level_initialized():
+	if level % 2 == 1:
+		$Music1.play()
+	else:
+		$Music2.play()
+	
 	$hud_level.bbcode_text = "[color=#e9e9e9]"+levelName+"[/color]"
 	$hud_level.append_bbcode("\n")
 	$hud_level.append_bbcode(levelDesc)
@@ -80,6 +85,8 @@ func _on_Level_level_initialized():
 	devil.is_active = true
 
 func _reset_level():
+	$AngiePortrait.offset = Vector2(-200,0)
+	$MonicaPortrait.offset = Vector2(180,0)
 	$LevelSummary.visible = false
 	receive_input = 0
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -92,6 +99,8 @@ func _on_level_cleared():
 	$Good.play()
 	yield(get_tree().create_timer(0.5), "timeout")
 	show_level_summary()
+	$Music1.stop()
+	$Music2.stop()
 		
 func _on_exittomenu_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")
