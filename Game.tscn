@@ -104,13 +104,13 @@ __meta__ = {
 }
 
 [node name="AngiePortrait" type="Sprite" parent="."]
-position = Vector2( 96, 153 )
+position = Vector2( 96, 150 )
 z_index = 2
 texture = ExtResource( 10 )
 offset = Vector2( -200, 0 )
 
 [node name="MonicaPortrait" type="Sprite" parent="."]
-position = Vector2( 504, 155 )
+position = Vector2( 504, 150 )
 z_index = 2
 texture = ExtResource( 11 )
 offset = Vector2( 180, 0 )
@@ -140,7 +140,7 @@ __meta__ = {
 [node name="Spacer3" type="Control" parent="LevelSummary/VBoxContainer"]
 margin_right = 3.0
 margin_bottom = 20.0
-rect_min_size = Vector2( 3, 40 )
+rect_min_size = Vector2( 3, 60 )
 
 [node name="Breakdown" type="RichTextLabel" parent="LevelSummary/VBoxContainer"]
 margin_top = 154.0
