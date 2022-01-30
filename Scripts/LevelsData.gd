@@ -106,8 +106,8 @@ const dialogues = [
 	["[color=#8fd3ff]That was nice![/color]"],
 	["[color=#c32454][right]You tripped.[/right][/color]"],
 #	3star
-	["[color=#8fd3ff]We're a great team when we work together![/color]","[color=#c32454][right]Whatever.[/right][/color]"],
-	["[color=#c32454][right]I guess that was pretty good.[/right][/color]","[color=#8fd3ff]That was fantastic![/color]"],
+	["[rainbow freq=0.2 sat=10 val=20]We're a great team when we work together![/rainbow]","[color=#c32454][right][shake rate=5 level=10]Whatever.[/shake][/right][/color]"],
+	["[color=#c32454][right]I guess that was [shake rate=5 level=10]pretty good.[/shake][/right][/color]","[rainbow freq=0.2 sat=10 val=20]That was fantastic![/rainbow]"],
 #	2star
 	["[color=#8fd3ff]That was a great effort![/color]","[color=#c32454][right]Could've been better.[/right][/color]"],
 	["[color=#8fd3ff]I'm glad to spend so much time together.[/color]","[color=#c32454][right]Could you be any more annoying?![/right][/color]"],
@@ -119,7 +119,7 @@ const dialogues = [
 	["[color=#c32454][right]Lucky for you I'm awesome![/right][/color]","[color=#8fd3ff]You are.  Thank you so much![/color]"],
 	["[color=#8fd3ff]We all need a helping hand sometimes.[/color]","[color=#c32454][right]I had it under control.[/right][/color]"],
 #	4star
-	["[color=#c32454][right]Hoooo-leeeeee. . . . . .[/right][/color]","[color=#8fd3ff]Don't you dare![/color]"]
+	["[color=#c32454][right]Hoooo-leeeeee. . . . . .[/right][/color]","[color=#8fd3ff][shake rate=5 level=10]Don't you dare![/shake][/color]"]
 ]
 
 const specificDialogues = {
