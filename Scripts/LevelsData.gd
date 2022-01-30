@@ -152,6 +152,14 @@ const specificDialogues = {
 	"Sticky Situation": [0,9,16,17,20]
 }
 
+var _exit_scene_path = "res://MainMenu.tscn"
+
+func get_exit_scene_path() -> String:
+	return _exit_scene_path
+	
+func set_exit_scene(sceneName:String) -> void:
+	_exit_scene_path = "res://" + sceneName + ".tscn"
+
 func getDialogue(levelName:String, stars:String):
 	if specificDialogues.has(levelName):
 		return dialogues[specificDialogues[levelName][randi() % specificDialogues[levelName].size()]]

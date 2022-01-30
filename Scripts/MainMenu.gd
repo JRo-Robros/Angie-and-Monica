@@ -18,6 +18,7 @@ func _ready():
 
 func _on_CampaignBtn_pressed():
 	LevelsData.custom_level = []
+	LevelsData.set_exit_scene("MainMenu")
 	get_tree().change_scene("res://Game.tscn")
 	pass # Replace with function body.
 

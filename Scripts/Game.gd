@@ -95,7 +95,7 @@ func _on_level_cleared():
 		
 func _on_exittomenu_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")
-	return	
+	return
 
 func show_level_summary():
 	$LevelSummary.visible = true
@@ -120,7 +120,8 @@ func show_level_summary():
 	$LevelSummary/VBoxContainer/Retry.visible = false
 	
 	dialogue(LevelsData.getDialogue(levelName, stars))
-	
+
+
 func advance():
 	$AngiePortrait.offset = Vector2(-200,0)
 	$MonicaPortrait.offset = Vector2(180,0)
@@ -131,26 +132,29 @@ func advance():
 		levelController.initialize_level(_levelData)
 	else:
 		print('You win!!')
-		if LevelsData.custom_level.size() > 0:
-			get_tree().change_scene("res://Editor.tscn")
-		else:
-			get_tree().change_scene("res://Title.tscn")
-	
+		get_tree().change_scene(LevelsData.get_exit_scene_path())
+
+
 func get_level_data() -> Array:
-	var _levelData:Array = []
-	print(LevelsData.custom_level)
-	if LevelsData.custom_level.size() >= level:
-		_levelData = LevelsData.custom_level[level-1].duplicate()
-	elif LevelsData.level_exists(level):
-		_levelData = LevelsData.get_level_data(level).duplicate()
+	var _levelData:Array = [] 
 	
-	if _levelData.size() < 1:
-		return []
-	elif (_levelData.size() - 108) % 3 != 0:
-		return []
+	# Try to grab the current custom level.
+	if LevelsData.custom_level.size() > 0:
+		if LevelsData.custom_level.size() >= level:
+			_levelData = LevelsData.custom_level[level-1].duplicate()
+	
+	# Try to grab the current built-in level.
 	else:
-		return _levelData
+		if LevelsData.level_exists(level):
+			_levelData = LevelsData.get_level_data(level).duplicate()
+	
+	# Set empty if corrupted.
+	if _levelData.size() > 0 && (_levelData.size() - 108) % 3 != 0:
+		_levelData = []
 		
+	return _levelData
+
+
 func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]","[color=#c32454][center]hi[/center][/color]"]):
 	var box = $LevelSummary/VBoxContainer/DialogueBox
 	tween.interpolate_property(

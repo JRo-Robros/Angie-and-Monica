@@ -112,6 +112,7 @@ func load_from_string(_inputString:String) -> void:
 func _on_TestLevelBtn_pressed() -> void:
 	LevelsData.custom_level = []
 	LevelsData.custom_level.push_back(compile_LevelData())
+	LevelsData.set_exit_scene("Editor")
 	get_tree().change_scene("res://Game.tscn")
 	return
 
