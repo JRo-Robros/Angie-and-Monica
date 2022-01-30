@@ -14,7 +14,7 @@
 extents = Vector2( 160, 3 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.215686, 0.305882, 0.290196, 1 )
+bg_color = Color( 0.180392, 0.133333, 0.184314, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 24

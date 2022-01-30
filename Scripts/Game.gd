@@ -3,6 +3,7 @@ extends Node2D
 onready var levelController:= $Level
 onready var angel := $Angel
 onready var devil := $Devil
+onready var tween := $Tween
 
 var receive_input := 0
 var level := 1
@@ -87,7 +88,6 @@ func _reset_level():
 func _on_level_cleared():
 	angel.is_active = false
 	devil.is_active = false
-	level += 1
 	receive_input = 0
 	$Good.play()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -112,11 +112,13 @@ func show_level_summary():
 	bd += "\n\n[/center]"
 		
 	$LevelSummary/VBoxContainer/Breakdown.bbcode_text = bd
-	$LevelSummary/VBoxContainer/Advance.grab_focus()
+	$LevelSummary/VBoxContainer/Advance.visible = false
+	$LevelSummary/VBoxContainer/Retry.visible = false
 	
-	$LevelSummary/VBoxContainer/DialogueBox.percent_visible = 1
+	dialogue()
 	
 func advance():
+	level += 1
 	$LevelSummary.visible = false
 	var _levelData = get_level_data()
 	if _levelData.size() > 0:
@@ -142,3 +144,24 @@ func get_level_data() -> Array:
 		return []
 	else:
 		return _levelData
+		
+func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]","[color=#c32454][center]hi[/center][/color]"]):
+	var box = $LevelSummary/VBoxContainer/DialogueBox
+	for line in dialogue:
+		box.bbcode_text = line
+		tween.interpolate_property(
+			box,
+			"percent_visible",
+			0,
+			1,
+			0.5,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT
+		)
+		tween.start()
+		yield(tween, 'tween_completed')
+		yield(get_tree().create_timer(1.0), "timeout")
+		box.percent_visible = 0
+		yield(get_tree().create_timer(0.2), "timeout")
+	$LevelSummary/VBoxContainer/Advance.visible = true
+	$LevelSummary/VBoxContainer/Retry.visible = true
