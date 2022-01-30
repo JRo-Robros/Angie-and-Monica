@@ -1,22 +1,32 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Angie_Smiling.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Monica_Smirking.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Cloud_01.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Cloud_02.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.282353, 0.290196, 0.466667, 1 )
 
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 3
+outline_color = Color( 0.984314, 1, 0.494118, 1 )
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 32
+outline_size = 2
+outline_color = Color( 0.517647, 0.054902, 0.364706, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -35,46 +45,91 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AMlabel" type="Label" parent="UI"]
+[node name="Container" type="Container" parent="UI"]
+margin_left = 186.0
+margin_top = 60.0
+margin_right = 572.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cloud01" type="Sprite" parent="UI/Container"]
+position = Vector2( 219, 163 )
+scale = Vector2( 0.92007, 0.92007 )
+texture = ExtResource( 5 )
+
+[node name="Cloud02" type="Sprite" parent="UI/Container/Cloud01"]
+position = Vector2( -43.475, 140.207 )
+rotation = 0.308885
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 6 )
+
+[node name="GameDescription" type="Label" parent="UI/Container"]
+margin_left = 11.0
+margin_top = 22.0
+margin_right = 363.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "They're lost in limbo! 
+     Help guide them home!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AngieSmiling" type="Sprite" parent="UI/Container"]
+position = Vector2( 195, 196 )
+scale = Vector2( 0.95, 0.95 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="MonicaSmirking" type="Sprite" parent="UI/Container"]
+position = Vector2( 289, 190 )
+texture = ExtResource( 4 )
+
+[node name="AngieLabel" type="Label" parent="UI"]
 margin_left = 1.0
 margin_top = 2.0
-margin_right = 574.0
+margin_right = 391.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 0, 40 )
-custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
-custom_fonts/font = SubResource( 3 )
-text = " Angie    Monica"
+custom_colors/font_color = Color( 0.54902, 0.823529, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Angie"
 align = 1
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="andLabel" type="Label" parent="UI"]
+[node name="MonicaLabel" type="Label" parent="UI"]
+margin_left = 200.0
+margin_top = 2.0
+margin_right = 574.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0.921569, 0.215686, 0.203922, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Monica"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AndLabel" type="Label" parent="UI"]
 margin_left = 1.0
 margin_top = 2.0
 margin_right = 574.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 0, 40 )
-custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
+custom_colors/font_color = Color( 0.658824, 0.501961, 0.964706, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "and"
 align = 1
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameDescription" type="Label" parent="UI"]
-margin_left = 197.0
-margin_top = 82.0
-margin_right = 549.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 0, 40 )
-custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "They're lost in limbo! 
-     Help guide them home!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -92,7 +147,7 @@ __meta__ = {
 margin_right = 137.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
-custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Main Menu"
 align = 1
@@ -143,16 +198,6 @@ margin_right = 137.0
 margin_bottom = 163.0
 disabled = true
 text = "Credits"
-
-[node name="AngieSmiling" type="Sprite" parent="UI"]
-position = Vector2( 381, 256 )
-scale = Vector2( 0.95, 0.95 )
-texture = ExtResource( 3 )
-flip_h = true
-
-[node name="MonicaSmirking" type="Sprite" parent="."]
-position = Vector2( 475, 250 )
-texture = ExtResource( 4 )
 
 [connection signal="pressed" from="UI/MenuButtons/CampaignBtn" to="." method="_on_CampaignBtn_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LevelEditorBtn" to="." method="_on_LevelEditorBtn_pressed"]
