@@ -1,84 +1,158 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/RETRO_SPACE_INV.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Angie_Smiling.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Monica_Smirking.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.282353, 0.290196, 0.466667, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
+size = 24
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="UI" type="Panel" parent="."]
+show_behind_parent = true
 margin_right = 575.0
 margin_bottom = 350.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AMlabel" type="Label" parent="UI"]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 574.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
+custom_fonts/font = SubResource( 3 )
+text = " Angie    Monica"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="andLabel" type="Label" parent="UI"]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 574.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "and"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameDescription" type="Label" parent="UI"]
+margin_left = 197.0
+margin_top = 82.0
+margin_right = 549.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "They're lost in limbo! 
+     Help guide them home!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuButtons" type="VBoxContainer" parent="UI"]
-margin_left = 18.0
-margin_top = 21.0
-margin_right = 128.0
-margin_bottom = 331.0
+margin_left = 32.0
+margin_top = 55.0
+margin_right = 169.0
+margin_bottom = 317.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/MenuButtons"]
-margin_top = -1.0
-margin_right = 110.0
-margin_bottom = 28.92
-rect_min_size = Vector2( 0, 29.92 )
+margin_right = 137.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color = Color( 0.305882, 0.976471, 0.996078, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Main Menu"
 align = 1
-valign = 1
 
 [node name="CampaignBtn" type="Button" parent="UI/MenuButtons"]
-margin_top = 33.0
-margin_right = 110.0
-margin_bottom = 53.0
+margin_top = 44.0
+margin_right = 137.0
+margin_bottom = 64.0
 text = "Campaign"
 
+[node name="Panel" type="Panel" parent="UI/MenuButtons"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 68.0
+margin_right = 137.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 0, 5 )
+
 [node name="LevelEditorBtn" type="Button" parent="UI/MenuButtons"]
-margin_top = 57.0
-margin_right = 110.0
-margin_bottom = 77.0
-text = "Level Editor"
+margin_top = 77.0
+margin_right = 137.0
+margin_bottom = 97.0
+text = "Editor"
+
+[node name="Panel2" type="Panel" parent="UI/MenuButtons"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 101.0
+margin_right = 137.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 0, 5 )
 
 [node name="SettingsBtn" type="Button" parent="UI/MenuButtons"]
-margin_top = 81.0
-margin_right = 110.0
-margin_bottom = 101.0
+margin_top = 110.0
+margin_right = 137.0
+margin_bottom = 130.0
 disabled = true
 text = "Settings"
 
+[node name="Panel3" type="Panel" parent="UI/MenuButtons"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 134.0
+margin_right = 137.0
+margin_bottom = 139.0
+rect_min_size = Vector2( 0, 5 )
+
 [node name="CreditsBtn" type="Button" parent="UI/MenuButtons"]
-margin_top = 105.0
-margin_right = 110.0
-margin_bottom = 125.0
+margin_top = 143.0
+margin_right = 137.0
+margin_bottom = 163.0
 disabled = true
 text = "Credits"
 
-[node name="CreditsPanel" type="Panel" parent="UI"]
-margin_left = 146.0
-margin_top = 53.0
-margin_right = 562.0
-margin_bottom = 336.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AngieSmiling" type="Sprite" parent="UI"]
+position = Vector2( 381, 256 )
+scale = Vector2( 0.95, 0.95 )
+texture = ExtResource( 3 )
+flip_h = true
 
-[node name="LevelEditorPanel" type="Panel" parent="UI"]
-margin_left = 146.0
-margin_top = 53.0
-margin_right = 562.0
-margin_bottom = 337.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MonicaSmirking" type="Sprite" parent="."]
+position = Vector2( 475, 250 )
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="UI/MenuButtons/CampaignBtn" to="." method="_on_CampaignBtn_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/LevelEditorBtn" to="." method="_on_LevelEditorBtn_pressed"]
