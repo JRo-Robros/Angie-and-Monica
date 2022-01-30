@@ -35,7 +35,7 @@ func _unhandled_key_input(event):
 			49:
 				set_tile_type(1)
 			50:
-				set_tile_type(2)
+				#set_tile_type(2)
 			51:
 				set_tile_type(3)
 			52:
