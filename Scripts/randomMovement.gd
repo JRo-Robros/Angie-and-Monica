@@ -1,11 +1,11 @@
-extends AnimatedSprite
+extends TextureRect
 
 var velocity = -10
-var chance = 200
+var chance = 50
 
 func _physics_process(delta):
 	chance -= 1
-	if chance < 100 && randi() % chance <= 5:
+	if chance < 40 && randi() % chance <= 5:
 		velocity *= -1
-		chance = 150
-	position.y += velocity * delta
+		chance = 50
+	rect_position.y += velocity * delta

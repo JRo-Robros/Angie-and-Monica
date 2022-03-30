@@ -14,6 +14,7 @@ var levelTime := 300
 var moves := 0
 var time := 0
 var game_is_over := false
+var starscene = preload("res://Star.tscn")
 
 signal input_received
 
@@ -85,8 +86,8 @@ func _on_Level_level_initialized():
 	devil.is_active = true
 
 func _reset_level():
-	$AngiePortrait.offset = Vector2(-200,0)
-	$MonicaPortrait.offset = Vector2(180,0)
+	$LevelSummary/AngiePortrait.rect_position = Vector2(-300, 73)
+	$LevelSummary/MonicaPortrait.rect_position = Vector2(580, 73)
 	$LevelSummary.visible = false
 	receive_input = 0
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -107,24 +108,44 @@ func _on_exittomenu_pressed():
 	return
 
 func show_level_summary():
+	var star_holder = $LevelSummary/VBoxContainer/HBoxContainer
+	for n in star_holder.get_children():
+		n.queue_free()
+		star_holder.remove_child(n)
 	$LevelSummary.visible = true
-	var stars = "1"
-	var bd = "[center]Well Done!\n\n"
-	bd += "Moves: " + str(moves) + "\n\n"
+	yield(get_tree().create_timer(0.5), "timeout")
+	tween.interpolate_property(
+		$LevelSummary/AngiePortrait,
+		"rect_position",
+		Vector2(-300,73),
+		Vector2(-80,73),
+		0.3,
+		Tween.TRANS_CUBIC,
+		Tween.EASE_IN_OUT
+	)
+	tween.interpolate_property(
+		$LevelSummary/MonicaPortrait,
+		"rect_position",
+		Vector2(580,73),
+		Vector2(350,73),
+		0.3,
+		Tween.TRANS_CUBIC,
+		Tween.EASE_IN_OUT
+	)
+	tween.start()
+	yield(tween, 'tween_completed')
+	
+	var stars = 1
 	if moves-levelMoves < 0:
-		bd += "New Record!!"
-		stars = "4"
+		stars = 4
 	elif moves-levelMoves == 0:
-		bd += "3 Stars"
-		stars = "3"
+		stars = 3
 	elif moves-levelMoves < 3:
-		bd += "2 Stars"
-		stars = "2"
-	else:
-		bd += "1 Star"
-	bd += "\n\n[/center]"
-		
-	$LevelSummary/VBoxContainer/Breakdown.bbcode_text = bd
+		stars = 2
+	for i in range(0, stars, 1):
+		$Good.play()
+		star_holder.add_child(starscene.instance())
+		yield(get_tree().create_timer(0.2), "timeout")
 	$LevelSummary/VBoxContainer/Advance.visible = false
 	$LevelSummary/VBoxContainer/Retry.visible = false
 	var _dialogs = LevelsData.getDialogue(levelName, stars)
@@ -133,8 +154,8 @@ func show_level_summary():
 
 
 func advance():
-	$AngiePortrait.offset = Vector2(-200,0)
-	$MonicaPortrait.offset = Vector2(180,0)
+	$LevelSummary/AngiePortrait.rect_position = Vector2(-300,73)
+	$LevelSummary/MonicaPortrait.rect_position = Vector2(580,73)
 	level += 1
 	$LevelSummary.visible = false
 	var _levelData = get_level_data()
@@ -166,43 +187,43 @@ func get_level_data() -> Array:
 
 func dialogue(dialogue:Array = ["[color=#8fd3ff][center]hello[/center][/color]","[color=#c32454][center]hi[/center][/color]"]):
 	var box = $LevelSummary/VBoxContainer/DialogueBox
-	tween.interpolate_property(
-		$AngiePortrait,
-		"offset",
-		Vector2(-200,0),
-		Vector2.ZERO,
-		0.5,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN_OUT
-	)
-	tween.interpolate_property(
-		$MonicaPortrait,
-		"offset",
-		Vector2(180,0),
-		Vector2.ZERO,
-		0.5,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN_OUT
-	)
-	tween.start()
-	yield(tween, 'tween_completed')
-	for line in dialogue:
-		box.percent_visible = 0
-		box.bbcode_text = line
-		tween.interpolate_property(
-			box,
-			"percent_visible",
-			0,
-			1,
-			0.75,
-			Tween.TRANS_LINEAR,
-			Tween.EASE_IN_OUT
-		)
-		tween.start()
-		yield(tween, 'tween_completed')
-		yield(get_tree().create_timer(1.2), "timeout")
-		box.percent_visible = 0
-		yield(get_tree().create_timer(0.2), "timeout")
+#	tween.interpolate_property(
+#		$LevelSummary/AngiePortrait,
+#		"rect_position",
+#		Vector2(-300,73),
+#		Vector2(-80,73),
+#		0.5,
+#		Tween.TRANS_LINEAR,
+#		Tween.EASE_IN_OUT
+#	)
+#	tween.interpolate_property(
+#		$LevelSummary/MonicaPortrait,
+#		"rect_position",
+#		Vector2(580,73),
+#		Vector2(350,73),
+#		0.5,
+#		Tween.TRANS_LINEAR,
+#		Tween.EASE_IN_OUT
+#	)
+#	tween.start()
+#	yield(tween, 'tween_completed')
+#	for line in dialogue:
+#		box.percent_visible = 0
+#		box.bbcode_text = line
+#		tween.interpolate_property(
+#			box,
+#			"percent_visible",
+#			0,
+#			1,
+#			0.75,
+#			Tween.TRANS_LINEAR,
+#			Tween.EASE_IN_OUT
+#		)
+#		tween.start()
+#		yield(tween, 'tween_completed')
+#		yield(get_tree().create_timer(1.2), "timeout")
+#		box.percent_visible = 0
+#		yield(get_tree().create_timer(0.2), "timeout")
 	$LevelSummary/VBoxContainer/Advance.visible = true
 	$LevelSummary/VBoxContainer/Retry.visible = true
 	$LevelSummary/VBoxContainer/Advance.grab_focus()

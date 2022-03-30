@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Editor.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Terrain.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Angel.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Devil.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Blocks.png" type="Texture" id=5]
+[ext_resource path="res://Env.tres" type="Environment" id=6]
 
 [node name="Editor" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,11 +30,11 @@ texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 22.0
-margin_top = 43.0
+margin_top = 40.0
 margin_right = 202.0
-margin_bottom = 60.0
+margin_bottom = 59.0
 rect_pivot_offset = Vector2( 8, -17 )
-text = "1  2   3  4  5   6"
+text = "1          2           3         4         5          6"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,25 +49,17 @@ margin_top = -13.0
 margin_right = -35.0
 margin_bottom = 37.0
 color = Color( 0.168627, 0.152941, 0.2, 0.745098 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 19.0
-margin_top = 99.0
+margin_top = 93.0
 margin_right = 195.0
-margin_bottom = 185.0
+margin_bottom = 222.0
 rect_pivot_offset = Vector2( 8, -17 )
-text = "q  w   e  r
+text = "q          w          e         r
 
-0 - clear tile
-9 - clear block
-a - set angel
-d - set devil"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+0 - clear tile            9 - clear block
+a - set angel            d - set devil"
 
 [node name="Output" type="TextEdit" parent="."]
 margin_left = 11.0
@@ -119,6 +112,9 @@ text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 6 )
 
 [connection signal="pressed" from="Button" to="." method="make_level"]
 [connection signal="pressed" from="Button2" to="." method="load_from_input"]

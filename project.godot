@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Duality"
-run/main_scene="res://Title.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon_default.png"
 
 [autoload]
@@ -64,6 +64,9 @@ window/stretch/aspect="keep"
 [global]
 
 "main scene"=false
+theme=false
+main=false
+scene=false
 
 [gui]
 
@@ -75,7 +78,8 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.168627, 0.152941, 0.2, 1 )
