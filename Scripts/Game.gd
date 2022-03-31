@@ -149,7 +149,6 @@ func show_level_summary():
 	$LevelSummary/VBoxContainer/Advance.visible = false
 	$LevelSummary/VBoxContainer/Retry.visible = false
 	var _dialogs = LevelsData.getDialogue(levelName, stars)
-	print(_dialogs)
 	dialogue(_dialogs)
 
 
