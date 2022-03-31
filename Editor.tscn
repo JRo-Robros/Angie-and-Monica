@@ -98,10 +98,7 @@ margin_left = 120.0
 margin_top = 323.0
 margin_right = 213.0
 margin_bottom = 343.0
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Test"
 
 [node name="ExitBtn" type="Button" parent="."]
 margin_left = 12.0
