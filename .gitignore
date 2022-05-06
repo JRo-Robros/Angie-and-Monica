@@ -1,3 +1,5 @@
+# Android stuff
+android/
 
 # Godot-specific ignores
 .import/
